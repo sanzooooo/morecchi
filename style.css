@@ -175,6 +175,21 @@ body.game-active {
     width: 100%;
     height: 100%;
   }
+
+  /* 虹色文字スタイル */
+.rainbow-text {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+  }
+  
+  /* かわいい手書きフォント */
+  body {
+    font-family: 'Yomogi', sans-serif;
+  }
+  
   
 
 
