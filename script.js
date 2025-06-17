@@ -82,11 +82,16 @@ window.addEventListener('load', () => {
 
   document.addEventListener('pointermove', (e) => {
     if (document.body.classList.contains('game-active')) e.preventDefault();
-    const x = e.clientX - gameArea.offsetLeft - player.offsetWidth / 2;
-    const y = gameArea.offsetHeight - (e.clientY - gameArea.offsetTop) - player.offsetHeight / 2;
+  
+    const offsetX = player.offsetWidth / 2;
+    const offsetY = player.offsetHeight / 2 + 20; // 指との距離
+  
+    const x = e.clientX - gameArea.offsetLeft - offsetX;
+    const y = e.clientY - gameArea.offsetTop - offsetY;
+  
     moveTo(x, y);
   }, { passive: false });
-
+  
   document.addEventListener('touchmove', (e) => {
     if (document.body.classList.contains('game-active')) e.preventDefault();
   }, { passive: false });
