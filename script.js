@@ -47,26 +47,27 @@ let gameEnded = false;
 
 // ===== ゲーム読み込み時のイベント =====
 window.addEventListener('load', () => {
-  bottomBanner = document.getElementById('game-banner');
+  const startButton = document.getElementById('start-button');
+  const startScreen = document.getElementById('start-screen');
+  const gameScreen = document.getElementById('game-screen');
+  const bottomBanner = document.getElementById('game-banner');
+
   showScoreHistory();
 
   startButton.addEventListener('click', () => {
-    // Audio再生はユーザー操作の中で初期化
     let startSound = new Audio('bgm/motech_start.mp3');
     let bgm = new Audio('bgm/motech_bgm.mp3');
     bgm.loop = true;
-  
-    // スタート音を再生（再生できなくてもスルー）
+
     startSound.play().catch(e => console.warn("スタート音エラー", e));
-  
-    // BGMも再生（これも失敗してもゲームは開始）
     bgm.play().catch(e => console.warn("BGMエラー", e));
-  
-    // ゲーム開始処理は必ず実行
+
     startScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
     startGame(bgm);
   });
+});
+
   
   
   
