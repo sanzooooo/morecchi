@@ -178,14 +178,17 @@ body.game-active {
 
   /* 虹色文字スタイル */
   .rainbow-text {
+    display: inline-block;
+    font-size: 3rem; /* ← モバイルで大きすぎず見やすいサイズ */
+    font-weight: 600; /* ← 少し太字に */
+    font-family: 'Yomogi', cursive;
     background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 700;  /* ← ここを 700 にアップ */
-    font-size: 2.4em;   /* ← 少し大きくしても見やすい */
+    line-height: 1.2; /* ← 行の詰まりを調整 */
     text-align: center;
-    display: inline-block;
   }
+  
   
   
   /* かわいい手書きフォント */
