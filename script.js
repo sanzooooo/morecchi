@@ -51,14 +51,18 @@ window.addEventListener('load', () => {
   showScoreHistory();
 
   startButton.addEventListener('click', () => {
+    // スタート音：再生試みるが失敗してもスルー
     startSound.play().catch(e => console.warn("スタート音が再生できません", e));
-    setTimeout(() => {
-      startScreen.classList.add('hidden');
-      gameScreen.classList.remove('hidden');
-      startGame();
-      bgm.play().catch(e => console.warn("BGM再生がブロックされました", e));
-    }, 500);
+  
+    // 即時に画面切り替え
+    startScreen.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
+    startGame();
+  
+    // BGM：モバイルでは失敗するかも
+    bgm.play().catch(e => console.warn("BGM再生がブロックされました", e));
   });
+  
 
   document.addEventListener('keydown', (e) => {
     if (e.code === 'ArrowLeft') movePlayer(-15, 0);
