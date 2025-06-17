@@ -107,10 +107,11 @@ body {
     position: absolute;
     width: 60px;
     height: auto;
-    bottom: 10px;
+    top: 10px;          /* ✅ これが正しい */
     left: 50px;
     transition: top 0.2s ease, left 0.2s ease;
   }
+  
   
   .falling-item {
     position: absolute;
