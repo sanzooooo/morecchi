@@ -51,17 +51,20 @@ window.addEventListener('load', () => {
   showScoreHistory();
 
   startButton.addEventListener('click', () => {
-    // スタート音：再生試みるが失敗してもスルー
+    // Audioオブジェクトをクリック内で新規作成
+    const startSound = new Audio('bgm/motech_start.mp3');
+    const bgm = new Audio('bgm/motech_bgm.mp3');
+    bgm.loop = true;
+  
     startSound.play().catch(e => console.warn("スタート音が再生できません", e));
   
-    // 即時に画面切り替え
     startScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
     startGame();
   
-    // BGM：モバイルでは失敗するかも
     bgm.play().catch(e => console.warn("BGM再生がブロックされました", e));
   });
+  
   
 
   document.addEventListener('keydown', (e) => {
