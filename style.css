@@ -168,6 +168,11 @@ body {
   position: relative; /* ← 必須！！ */
 }
 
+body, html {
+  overflow: hidden;
+  touch-action: none;
+}
+
   
   
   
