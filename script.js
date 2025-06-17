@@ -83,8 +83,8 @@ window.addEventListener('load', () => {
   document.addEventListener('pointermove', (e) => {
     if (document.body.classList.contains('game-active')) e.preventDefault();
   
-    const offsetX = player.offsetWidth / 2;
-    const offsetY = player.offsetHeight / 2 + 20; // 指との距離
+    const offsetY = player.offsetHeight / 2 + 40; // ← 40くらいに増やすと自然
+const y = e.clientY - gameArea.offsetTop - offsetY;
   
     const x = e.clientX - gameArea.offsetLeft - offsetX;
     const y = e.clientY - gameArea.offsetTop - offsetY;
