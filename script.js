@@ -51,19 +51,23 @@ window.addEventListener('load', () => {
   showScoreHistory();
 
   startButton.addEventListener('click', () => {
-    // Audioオブジェクトをクリック内で新規作成
-    const startSound = new Audio('bgm/motech_start.mp3');
-    const bgm = new Audio('bgm/motech_bgm.mp3');
+    // Audio再生はユーザー操作の中で初期化
+    let startSound = new Audio('bgm/motech_start.mp3');
+    let bgm = new Audio('bgm/motech_bgm.mp3');
     bgm.loop = true;
   
-    startSound.play().catch(e => console.warn("スタート音が再生できません", e));
+    // スタート音を再生（再生できなくてもスルー）
+    startSound.play().catch(e => console.warn("スタート音エラー", e));
   
+    // BGMも再生（これも失敗してもゲームは開始）
+    bgm.play().catch(e => console.warn("BGMエラー", e));
+  
+    // ゲーム開始処理は必ず実行
     startScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
-    startGame();
-  
-    bgm.play().catch(e => console.warn("BGM再生がブロックされました", e));
+    startGame(bgm);
   });
+  
   
   
 
