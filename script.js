@@ -47,11 +47,7 @@ let gameEnded = false;
 
 // ===== ゲーム読み込み時のイベント =====
 window.addEventListener('load', () => {
-  const startButton = document.getElementById('start-button');
-  const startScreen = document.getElementById('start-screen');
-  const gameScreen = document.getElementById('game-screen');
-  const bottomBanner = document.getElementById('game-banner');
-
+  bottomBanner = document.getElementById('game-banner');
   showScoreHistory();
 
   startButton.addEventListener('click', () => {
@@ -68,35 +64,30 @@ window.addEventListener('load', () => {
   });
 });
 
-  
-  
-  
-
-  document.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowLeft') movePlayer(-15, 0);
-    if (e.code === 'ArrowRight') movePlayer(15, 0);
-    if (e.code === 'ArrowUp') movePlayer(0, 20);
-    if (e.code === 'ArrowDown') movePlayer(0, -20);
-  });
-
-  player.addEventListener('pointerdown', () => isDragging = true);
-
-  document.addEventListener('pointermove', (e) => {
-    if (document.body.classList.contains('game-active')) e.preventDefault();
-  
-    const offsetY = player.offsetHeight / 2 + 40; // ← 40くらいに増やすと自然
-const y = e.clientY - gameArea.offsetTop - offsetY;
-  
-    const x = e.clientX - gameArea.offsetLeft - offsetX;
-    const y = e.clientY - gameArea.offsetTop - offsetY;
-  
-    moveTo(x, y);
-  }, { passive: false });
-  
-  document.addEventListener('touchmove', (e) => {
-    if (document.body.classList.contains('game-active')) e.preventDefault();
-  }, { passive: false });
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'ArrowLeft') movePlayer(-15, 0);
+  if (e.code === 'ArrowRight') movePlayer(15, 0);
+  if (e.code === 'ArrowUp') movePlayer(0, 20);
+  if (e.code === 'ArrowDown') movePlayer(0, -20);
 });
+
+player.addEventListener('pointerdown', () => isDragging = true);
+
+document.addEventListener('pointermove', (e) => {
+  if (document.body.classList.contains('game-active')) e.preventDefault();
+
+  const offsetX = player.offsetWidth / 2;
+  const offsetY = player.offsetHeight / 2 + 40;
+  const x = e.clientX - gameArea.offsetLeft - offsetX;
+  const y = e.clientY - gameArea.offsetTop - offsetY;
+
+  moveTo(x, y);
+}, { passive: false });
+
+document.addEventListener('touchmove', (e) => {
+  if (document.body.classList.contains('game-active')) e.preventDefault();
+}, { passive: false });
+
 
 function startGame() {
   document.body.classList.add('game-active');
