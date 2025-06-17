@@ -168,10 +168,11 @@ body {
   position: relative; /* ← 必須！！ */
 }
 
-body, html {
+body.game-active {
   overflow: hidden;
   touch-action: none;
 }
+
 
   
   
