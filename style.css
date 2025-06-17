@@ -168,34 +168,39 @@ body {
   position: relative; /* ← 必須！！ */
 }
 
-body.game-active {
-    overflow: hidden;        /* スクロール禁止 */
-    touch-action: none;      /* タッチイベント無効化 */
-    position: fixed;         /* 画面を固定 */
+/* かわいい手書きフォント（共通） */
+body {
+    font-family: 'Yomogi', sans-serif;
+    font-weight: 600; /* ← これで細すぎを解消 */
+  }
+  
+  /* ゲーム中：スクロール禁止＆固定 */
+  body.game-active {
+    overflow: hidden;
+    touch-action: none;
+    position: fixed;
     width: 100%;
     height: 100%;
   }
-
+  
   /* 虹色文字スタイル */
   .rainbow-text {
-    display: inline-block;
-    font-size: 3rem; /* ← モバイルで大きすぎず見やすいサイズ */
-    font-weight: 600; /* ← 少し太字に */
+    font-size: 3rem;
+    font-weight: 600;
     font-family: 'Yomogi', cursive;
     background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1.2; /* ← 行の詰まりを調整 */
+    line-height: 1.2;
     text-align: center;
   }
   
-  
-  
-  /* かわいい手書きフォント */
-  body {
-    font-family: 'Yomogi', sans-serif;
-    font-weight: 600; /* ← これで細すぎを解消 */
+  /* 見出し調整 */
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
   }
+  
   
   
 
