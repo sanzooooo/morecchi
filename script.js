@@ -88,19 +88,27 @@ window.addEventListener('load', () => {
     });
   
     player.addEventListener('pointerdown', () => isDragging = true);
-    document.addEventListener('pointerup', () => isDragging = false);
     document.addEventListener('pointermove', (e) => {
-      e.preventDefault();
+      if (document.body.classList.contains('game-active')) {
+        e.preventDefault();
+      }
       const x = e.clientX - gameArea.offsetLeft - player.offsetWidth / 2;
       const y = gameArea.offsetHeight - (e.clientY - gameArea.offsetTop) - player.offsetHeight / 2;
       moveTo(x, y);
     }, { passive: false });
-  });
+
+    document.addEventListener('touchmove', (e) => {
+      if (document.body.classList.contains('game-active')) {
+        e.preventDefault();
+      }
+    }, { passive: false });    
 
 const goalSound = new Audio('bgm/motech_goal2.mp3');
 
 
 function startGame() {
+  document.body.classList.add('game-active');
+
   startScreen.classList.add('hidden');
   gameScreen.classList.remove('hidden');
   gameOverScreen.classList.add('hidden');
@@ -262,6 +270,8 @@ function endGame(cleared) {
     if (gameEnded) return;         // ←多重呼び出しを防ぐ
     gameEnded = true;
   
+    document.body.classList.remove('game-active');
+
     clearInterval(gameInterval);
     clearInterval(itemInterval);
     clearInterval(countdown);
