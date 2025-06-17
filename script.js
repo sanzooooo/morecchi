@@ -147,7 +147,7 @@ function movePlayer(dx, dy) {
 
 function updatePlayerPosition() {
   player.style.left = `${playerX}px`;
-  player.style.bottom = `${playerY}px`;
+  player.style.top = `${playerY}px`;
 }
 
 function spawnItem() {
